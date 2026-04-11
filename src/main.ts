@@ -1,65 +1,114 @@
 import { todoList } from "./todo"
 import { todoManager } from "./todoManager"
 
-//DOM laddas, prevent default på formulär
+
+const newManager = new todoManager();
+
+const addButton = document.getElementById("addButton") as HTMLButtonElement;
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("form") as HTMLFormElement;
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
 
-        newTodo();
-    })
+    createTodos(); //Ska denna vara här? kanske bättre att skapande triggande av click, medan utskrift till dom av den redan färdiga listan sker i annan funktion?
+
+
+    addButton.addEventListener("click", () => {
+
+        getInput();
+    });
+
+
 })
 
 
-const todoMan = new todoManager();
 
+const taskInput = document.getElementById("task") as HTMLInputElement;
+const priorityInput = document.getElementById("priority") as HTMLInputElement;
 
-function getBooleand
+/**
+ * Hämta input
+ * Kontrollera och använda i addTodo
+ */
 
-
-function newTodo(): void {
-    const taskInput = document.getElementById("task") as HTMLInputElement;
-    const priorityInput = document.getElementById("priority") as HTMLInputElement;
+function getInput(): void {
 
     const task: string = taskInput.value;
     const priority: string = priorityInput.value;
 
-    if (task && priority) {
-        const newTodo = new todoList(task, checkedBox(), priority);
-        todoMan.addTodo(newTodo);
-        taskInput.value = "";
-        priorityInput.value = "";
-    }
+    const successResult = newManager.addTodo(task, priority);
+
+    handleInput(successResult);
 }
 
-
-function checkedBox(todoIndex: any): boolean {
-
-    const checkbox = document.getElementById(`checkbox${todoIndex}`) as HTMLInputElement;
-
-    if (checkbox.checked) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-//Fortsätt.. boolen måste vara med också för klar eller inte klar.
 
 /**
- * import {todoList} from "./todo"
- import {localStorageHandl} from "./localStorageHandl"
- 
- export class todoManager {
-     private todos: todoList[] = [];     //Arrays som samlar object med todos
- 
-     constructor() {
-         this.todos = localStorageHandl.loadTodos();     //Retur-arrayen från loadTodos i localStorageHandl
-     }
- }
- 
- // forstätt... 
+ * Hantera input
+ * Om vi har input skapa todo
+ * Om inte, felmeddelande
  */
+
+function handleInput(successResult: boolean): void {
+
+
+    const allFieldsError = document.getElementById("allFieldsError") as HTMLElement;
+
+    if (successResult) {
+        createTodos();
+
+        taskInput.value = "";
+        priorityInput.value = "";
+
+        allFieldsError.classList.add("is_hidden");
+
+    } else {
+        allFieldsError.classList.remove("is_hidden");
+    }
+}
+
+
+
+
+
+
+function createTodos(): void {
+
+    const todoSpot = document.getElementById("todos") as HTMLDivElement;
+
+    const allTodos: todoList[] = newManager.getTodos();
+
+    console.log(allTodos);
+
+    allTodos.forEach((todo, index) => {
+
+        const todoUl = document.createElement("ul");
+
+        const taskLi = document.createElement("li");
+        taskLi.textContent = todo.task;
+
+        const priorityLi = document.createElement("li");
+        priorityLi.textContent = todo.priority;
+
+
+        const checkBoxLi = document.createElement("li");
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = `Checkbox${index}`;
+
+        checkBoxLi.appendChild(checkbox);
+
+        const label = document.createElement("label");
+        label.htmlFor = `Checkbox${index}`;
+        label.appendChild(document.createTextNode("Markera som utförd: "))
+
+        todoUl.appendChild(taskLi);
+        todoUl.appendChild(priorityLi);
+        todoUl.appendChild(checkBoxLi);
+
+        todoSpot.appendChild(todoUl);
+    })
+}
+
+
 

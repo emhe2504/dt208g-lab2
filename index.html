@@ -22,6 +22,7 @@
     <section>
       <h3>Här kan du lägga till saker i listan</h3>
       <p>Prioritet anges som 1 till 3, där 1 är viktigast att utföra först.</p>
+      <p id="allFieldsError" class="is_hidden">Alla fält måste vara ifyllda!</p>
       <form id="form">
 
         <label for="task">Att göra: </label>
@@ -30,8 +31,8 @@
         <label for="priority">Prioritet: </label>
         <input type="text" id="priority" placeholder="Priotitet, 1-3">
 
-        <label for="submitButton">Lägg till i checklista: </label>
-        <input id="submitButton" type="submit" value="Lägg till">
+        <label for="addButton">Lägg till i checklista: </label>
+        <input id="addButton" type="button" value="Lägg till">
       </form>
     </section>
   </main>
