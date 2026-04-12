@@ -81,15 +81,17 @@ function handleInput(successResult: boolean): void {
  * Med möjlighet att checka av.
  */
 
+const todoSpot = document.getElementById("todos") as HTMLDivElement;
 
 function renderTodos(): void {
 
-    const todoSpot = document.getElementById("todos") as HTMLDivElement;
     todoSpot.innerHTML = "";
 
     const allTodos: todoList[] = newManager.getTodos();
 
-    allTodos.forEach((todo, index) => {
+    if (allTodos.length > 0) {
+
+        allTodos.forEach((todo, index) => {
 
         const todoUl = document.createElement("ul") as HTMLUListElement;
 
@@ -119,6 +121,18 @@ function renderTodos(): void {
 
         todoSpot.appendChild(todoUl);
     })
+
+    } else {
+
+        const textElement = document.createElement("p");
+        textElement.id = "check";
+        textElement.textContent = "Du har checkat av alla punkter!";
+        todoSpot.appendChild(textElement);
+
+
+    }
+
+    
 }
 
 

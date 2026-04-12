@@ -40,18 +40,29 @@ h1 {
     margin-bottom: 0;
 }
 
-#todolist {
+#list-section {
     display: grid;
     grid-template-columns: 40% 1fr;
     margin-bottom: 4%;
     margin-top: 2%;
 }
 
+#check {
+    display: grid;
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+    color: white;
+}
+
+picture {
+    display: grid;
+    align-self: center;
+}
 #picture {
     display: grid;
-    width: 80%;
+    width: 60%;
     justify-self: center;
-    margin-top: 5%;
     transform: rotate(-5deg);
 }
 
@@ -71,18 +82,50 @@ h1 {
     background-color: white;
     justify-self: center;
     list-style: none;
-    line-height: 2em;
     border-bottom: 1px solid #7AAACE;
     border-radius: 10px;
     padding-left: 0;
+    padding-top: 1%;
     margin: 0;
-    padding-top: 1.5%;
-    padding-bottom: 1.5%;
     color: #355872;
     font-weight: 600;
 }
 
 #todos ul li {
+    align-content: center;
     font-size: 18px;
     margin-left: 3%;
+}
+
+#add-section {
+    display: grid;
+    width: 65%;
+    justify-self: center;
+    background-color: white;
+    padding: 3%;
+    margin-top: 10%;
+    color: #355872;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+form {
+    display: grid;
+    width: 40%;
+    line-height: 1em;
+}
+
+label {
+    margin-bottom: 1%;
+}
+
+footer {
+    display: grid;
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    color: #355872;
+    margin-top: 8%;
+    padding-top: 1%;
+    padding-bottom: 1%;
 }
