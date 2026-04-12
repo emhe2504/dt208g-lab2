@@ -6,18 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lab2-dt208g</title>
   <link rel="stylesheet" href="/src/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+    rel="stylesheet">
 </head>
 
-<body>
+<body class="source-sans">
   <header>
-    <h1>Checklistan</h1>
-    <p>Vad behöver göras?</p>
+    <h1 class="indie-flower">Checklistan</h1>
+    <p>Prioritet 1 är viktigast, 3 minst viktig. Bocka av dem när du är klar.</p>
   </header>
   <main>
     <section id="todolist">
-    <h2>Här är din checklista</h2>
-    <p>Punkterna är prioriterade. Bocka av dem när du är klar.</p>
-    <div id="todos"></div>
+      <picture>
+        <source srcset="/quote.webp" type="image/webp">
+        <img src="/quote.jpg" id="picture" alt="Handskrivet citat">
+      </picture>
+      <div id="todos" class="indie-flower"></div>
     </section>
     <section>
       <h3>Här kan du lägga till saker i listan</h3>

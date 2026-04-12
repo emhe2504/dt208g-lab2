@@ -97,7 +97,7 @@ function renderTodos(): void {
         taskLi.textContent = todo.task;
 
         const priorityLi = document.createElement("li") as HTMLLIElement;
-        priorityLi.textContent = todo.priority;
+        priorityLi.textContent = "Prioritet: " + todo.priority;
 
 
         const checkBoxLi = document.createElement("li") as HTMLLIElement;
