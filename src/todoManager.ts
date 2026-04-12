@@ -4,18 +4,25 @@ import { localStorageHandl } from "./localStorageHandl"
 
 
 export class todoManager {
-    private todos: todoList[] = [];     //Arrays som samlar object med todos
+    public todos: todoList[] = [];     //Arrays som samlar object med todos
 
     constructor() {
-        this.todos = localStorageHandl.loadTodos();     //Retur-arrayen från loadTodos i localStorageHandl
+        this.todos = localStorageHandl.loadTodos();     //Initierar och laddar retur-arrayen från loadTodos
     }
 
+
+    /**
+     * Om korrekt input skickas ny todo till ovan array.
+     * Även till saveTodos som hanterar localStorage.
+     * Returnerar true eller false beroende på korrekt input
+     */
 
     public addTodo(task: string, priority: string): boolean {
 
         if (task && priority) {
-            const newTodo = new todoList(task, false, priority);
+            const newTodo: todoList = new todoList(task, false, priority);
             this.todos.push(newTodo);
+            localStorageHandl.saveTodos(this.todos);
             return true;
         } else {
             return false;
@@ -23,14 +30,11 @@ export class todoManager {
 
     }
 
+    /**
+     * Metod för att hämta hela listan av todos
+     */
+
     public getTodos(): todoList[] {
         return this.todos;
     }
 }
-
-
-// Här ska det vara en metod addTodo() som lägger till nya todos
-
-
-
-//Det är fel! Varför blir det fyra som pushas till arrayen??

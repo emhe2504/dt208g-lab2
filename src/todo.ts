@@ -1,4 +1,4 @@
-import type {todo} from "./intTodo";
+import type { todo } from "./intTodo";
 
 export class todoList implements todo {
     task: string;

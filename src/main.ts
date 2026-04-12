@@ -2,15 +2,20 @@ import { todoList } from "./todo"
 import { todoManager } from "./todoManager"
 
 
-const newManager = new todoManager();
+const newManager = new todoManager();       //Skapar instans av todoManager
+
+
+
+/**
+ * Ladda in todos och 
+ * aktivera "click" på knapp.
+ */
 
 const addButton = document.getElementById("addButton") as HTMLButtonElement;
 
-
-
 document.addEventListener("DOMContentLoaded", () => {
 
-    createTodos(); //Ska denna vara här? kanske bättre att skapande triggande av click, medan utskrift till dom av den redan färdiga listan sker i annan funktion?
+    renderTodos();
 
 
     addButton.addEventListener("click", () => {
@@ -23,29 +28,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+/**
+ * Hämta value som skrivs in,
+ * validera input i addTodo.
+ * Hantera true eller false i handleInput.
+ */
+
 const taskInput = document.getElementById("task") as HTMLInputElement;
 const priorityInput = document.getElementById("priority") as HTMLInputElement;
-
-/**
- * Hämta input
- * Kontrollera och använda i addTodo
- */
 
 function getInput(): void {
 
     const task: string = taskInput.value;
     const priority: string = priorityInput.value;
 
-    const successResult = newManager.addTodo(task, priority);
+    const successResult = newManager.addTodo(task, priority); //true eller false
 
     handleInput(successResult);
 }
 
 
+
 /**
- * Hantera input
- * Om vi har input skapa todo
- * Om inte, felmeddelande
+ * Använda true eller false.
+ * Om korrekt input är true, skapas todo.
+ * Annars skrivs felmeddelande ut.
  */
 
 function handleInput(successResult: boolean): void {
@@ -54,7 +61,7 @@ function handleInput(successResult: boolean): void {
     const allFieldsError = document.getElementById("allFieldsError") as HTMLElement;
 
     if (successResult) {
-        createTodos();
+        renderTodos();
 
         taskInput.value = "";
         priorityInput.value = "";
@@ -68,39 +75,43 @@ function handleInput(successResult: boolean): void {
 
 
 
+/**
+ * Hämtar alla todos - getTodo.
+ * Gör lista för varje todo.
+ * Med möjlighet att checka av.
+ */
 
 
-
-function createTodos(): void {
+function renderTodos(): void {
 
     const todoSpot = document.getElementById("todos") as HTMLDivElement;
+    todoSpot.innerHTML = "";
 
     const allTodos: todoList[] = newManager.getTodos();
 
-    console.log(allTodos);
-
     allTodos.forEach((todo, index) => {
 
-        const todoUl = document.createElement("ul");
+        const todoUl = document.createElement("ul") as HTMLUListElement;
 
-        const taskLi = document.createElement("li");
+        const taskLi = document.createElement("li") as HTMLLIElement;
         taskLi.textContent = todo.task;
 
-        const priorityLi = document.createElement("li");
+        const priorityLi = document.createElement("li") as HTMLLIElement;
         priorityLi.textContent = todo.priority;
 
 
-        const checkBoxLi = document.createElement("li");
+        const checkBoxLi = document.createElement("li") as HTMLLIElement;
 
-        const checkbox = document.createElement("input");
+        const checkbox = document.createElement("input") as HTMLInputElement;
         checkbox.type = "checkbox";
         checkbox.id = `Checkbox${index}`;
 
-        checkBoxLi.appendChild(checkbox);
-
-        const label = document.createElement("label");
+        const label = document.createElement("label") as HTMLLabelElement;
         label.htmlFor = `Checkbox${index}`;
-        label.appendChild(document.createTextNode("Markera som utförd: "))
+        label.textContent = "Markera som utförd: ";
+
+        checkBoxLi.appendChild(label);
+        checkBoxLi.appendChild(checkbox);
 
         todoUl.appendChild(taskLi);
         todoUl.appendChild(priorityLi);
