@@ -141,6 +141,14 @@ function renderTodos(): void {
             deleteButton.textContent = "Radera";
             deleteButton.id = `button${index}`;
 
+            //Styling
+            deleteButton.style.backgroundColor = "white";
+            deleteButton.style.border = "1px solid #355872"
+            deleteButton.style.borderRadius = "5px";
+            deleteButton.style.color = "#355872"
+            deleteButton.style.width = "15%"
+            deleteButton.style.marginBottom = "1%";
+
             deleteLi.appendChild(deleteButton);
 
 

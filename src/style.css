@@ -119,6 +119,21 @@ form {
     line-height: 1em;
 }
 
+input[type=text] {
+    border: 1px solid #355872;
+    padding: 1%;
+}
+
+input[type=button] {
+    width: 30%;
+    border: 1px solid #355872;
+    background-color: white;
+    color: #355872;
+    border-radius: 5px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
 label {
     margin-bottom: 1%;
 }
