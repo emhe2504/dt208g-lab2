@@ -2,6 +2,10 @@
     display: none !important;
 }
 
+#allFieldsError {
+    color: red;
+}
+
 .indie-flower {
   font-family: "Indie Flower", cursive;
   font-weight: 500;

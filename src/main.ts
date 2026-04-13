@@ -85,7 +85,7 @@ const todoSpot = document.getElementById("todos") as HTMLDivElement;
 
 function renderTodos(): void {
 
-    todoSpot.innerHTML = "";
+    todoSpot.innerHTML = "";        //Rensa listan
 
     const allTodos: todoList[] = newManager.getTodos();
 
@@ -93,38 +93,52 @@ function renderTodos(): void {
 
         allTodos.forEach((todo, index) => {
 
-        const todoUl = document.createElement("ul") as HTMLUListElement;
+            const todoUl = document.createElement("ul") as HTMLUListElement;
+            todoUl.id = `ul-${index}`;
 
-        const taskLi = document.createElement("li") as HTMLLIElement;
-        taskLi.textContent = todo.task;
+            const taskLi = document.createElement("li") as HTMLLIElement;
+            taskLi.textContent = todo.task;
 
-        const priorityLi = document.createElement("li") as HTMLLIElement;
-        priorityLi.textContent = "Prioritet: " + todo.priority;
+            const priorityLi = document.createElement("li") as HTMLLIElement;
+            priorityLi.textContent = "Prioritet: " + todo.priority;
 
 
-        const checkBoxLi = document.createElement("li") as HTMLLIElement;
+            const checkBoxLi = document.createElement("li") as HTMLLIElement;
 
-        const checkbox = document.createElement("input") as HTMLInputElement;
-        checkbox.type = "checkbox";
-        checkbox.id = `Checkbox${index}`;
+            const checkbox = document.createElement("input") as HTMLInputElement;
+            checkbox.type = "checkbox";
+            checkbox.id = `Checkbox${index}`;
 
-        const label = document.createElement("label") as HTMLLabelElement;
-        label.htmlFor = `Checkbox${index}`;
-        label.textContent = "Markera som utförd: ";
+            const label = document.createElement("label") as HTMLLabelElement;
+            label.htmlFor = `Checkbox${index}`;
+            label.textContent = "Markera som utförd: ";
 
-        checkBoxLi.appendChild(label);
-        checkBoxLi.appendChild(checkbox);
+            checkBoxLi.appendChild(label);
+            checkBoxLi.appendChild(checkbox);
 
-        todoUl.appendChild(taskLi);
-        todoUl.appendChild(priorityLi);
-        todoUl.appendChild(checkBoxLi);
+            todoUl.appendChild(taskLi);
+            todoUl.appendChild(priorityLi);
+            todoUl.appendChild(checkBoxLi);
 
-        todoSpot.appendChild(todoUl);
-    })
+            //Möjlighet att radera todo
+
+            const deleteLi = document.createElement("li");
+
+            const deleteButton = document.createElement("button") as HTMLButtonElement;
+            deleteButton.textContent = "Radera";
+            deleteButton.id = `button${index}`;
+
+            deleteLi.appendChild(deleteButton);
+            todoUl.appendChild(deleteLi);
+    
+            todoSpot.appendChild(todoUl);
+
+            deleteButton.addEventListener("click", () => deleteTodo(index));
+        })
 
     } else {
 
-        const textElement = document.createElement("p");
+        const textElement = document.createElement("p") as HTMLElement;
         textElement.id = "check";
         textElement.textContent = "Du har checkat av alla punkter!";
         todoSpot.appendChild(textElement);
@@ -132,8 +146,11 @@ function renderTodos(): void {
 
     }
 
-    
 }
 
 
+function deleteTodo(index: number): void {
 
+    newManager.deleteTodo(index);
+    renderTodos();
+}

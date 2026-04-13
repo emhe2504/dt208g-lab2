@@ -30,6 +30,13 @@ export class todoManager {
 
     }
 
+    public deleteTodo(index: number): void {
+
+        this.todos.splice(index, 1);
+        localStorageHandl.saveTodos(this.todos);
+    }
+
+
     /**
      * Metod för att hämta hela listan av todos
      */
