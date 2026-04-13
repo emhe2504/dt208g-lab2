@@ -107,19 +107,7 @@ function renderTodos(): void {
 
             const checkbox = document.createElement("input") as HTMLInputElement;
             checkbox.type = "checkbox";
-            checkbox.id = `Checkbox${index}`;
-
-            checkbox.addEventListener("change", () => {
-
-                if (checkbox.checked) {
-
-                    console.log(`Checkbox${index} checked`);
-                    newManager.markTodoCompleted(index);
-                }else {
-                    console.log(`Checkbox${index} not checked`);
-                }
-               
-            })
+            checkbox.id = `Checkbox-${index}`;
 
             const label = document.createElement("label") as HTMLLabelElement;
             label.htmlFor = `Checkbox-${index}`;
@@ -128,11 +116,24 @@ function renderTodos(): void {
             checkBoxLi.appendChild(label);
             checkBoxLi.appendChild(checkbox);
 
-            todoUl.appendChild(taskLi);
-            todoUl.appendChild(priorityLi);
-            todoUl.appendChild(checkBoxLi);
 
-            //Möjlighet att radera todo
+            //Möjlighet att markera todo klar via checkbox
+
+            checkbox.addEventListener("change", () => {
+
+                if (checkbox.checked) {
+
+                    newManager.markTodoCompleted(index, true);
+                    todoUl.style.textDecoration = 'line-through';
+
+                } else {
+                    newManager.markTodoCompleted(index, false);
+                    todoUl.style.textDecoration = 'none';
+                }
+
+            })
+
+            //Möjlighet att radera todo via radera-knapp
 
             const deleteLi = document.createElement("li");
 
@@ -141,6 +142,11 @@ function renderTodos(): void {
             deleteButton.id = `button${index}`;
 
             deleteLi.appendChild(deleteButton);
+
+
+            todoUl.appendChild(taskLi);
+            todoUl.appendChild(priorityLi);
+            todoUl.appendChild(checkBoxLi);
             todoUl.appendChild(deleteLi);
 
             todoSpot.appendChild(todoUl);

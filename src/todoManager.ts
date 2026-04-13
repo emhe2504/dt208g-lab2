@@ -30,10 +30,17 @@ export class todoManager {
 
     }
 
-    public markTodoCompleted (index: number): void {
+    /**
+     * Korrigera completed i this.todos
+     * beroende på om checkbox är checked eller inte 
+     */
 
-        console.log(index);
-        
+    public markTodoCompleted(index: number, completed: boolean): void {
+
+
+        this.todos[index].completed = completed;
+        localStorageHandl.saveTodos(this.todos);
+
     }
 
     public deleteTodo(index: number): void {
