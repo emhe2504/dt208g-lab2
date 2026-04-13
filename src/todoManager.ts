@@ -30,6 +30,12 @@ export class todoManager {
 
     }
 
+    public markTodoCompleted (index: number): void {
+
+        console.log(index);
+        
+    }
+
     public deleteTodo(index: number): void {
 
         this.todos.splice(index, 1);

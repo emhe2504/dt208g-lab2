@@ -109,8 +109,20 @@ function renderTodos(): void {
             checkbox.type = "checkbox";
             checkbox.id = `Checkbox${index}`;
 
+            checkbox.addEventListener("change", () => {
+
+                if (checkbox.checked) {
+
+                    console.log(`Checkbox${index} checked`);
+                    newManager.markTodoCompleted(index);
+                }else {
+                    console.log(`Checkbox${index} not checked`);
+                }
+               
+            })
+
             const label = document.createElement("label") as HTMLLabelElement;
-            label.htmlFor = `Checkbox${index}`;
+            label.htmlFor = `Checkbox-${index}`;
             label.textContent = "Markera som utförd: ";
 
             checkBoxLi.appendChild(label);
@@ -130,7 +142,7 @@ function renderTodos(): void {
 
             deleteLi.appendChild(deleteButton);
             todoUl.appendChild(deleteLi);
-    
+
             todoSpot.appendChild(todoUl);
 
             deleteButton.addEventListener("click", () => deleteTodo(index));
