@@ -19,7 +19,7 @@ export class todoManager {
 
     public addTodo(task: string, priority: string): boolean {
 
-        if (task && priority) {
+        if ((task && priority) && (priority === "1" || priority === "2" || priority === "3")) {
             const newTodo: todoList = new todoList(task, false, priority);
             this.todos.push(newTodo);
             localStorageHandl.saveTodos(this.todos);
