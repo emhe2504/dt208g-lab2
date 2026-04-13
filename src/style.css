@@ -7,15 +7,15 @@
 }
 
 .indie-flower {
-  font-family: "Indie Flower", cursive;
-  font-weight: 500;
-  font-style: normal;
+    font-family: "Indie Flower", cursive;
+    font-weight: 500;
+    font-style: normal;
 }
 
 .source-sans {
-  font-family: "Source Sans 3", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
+    font-family: "Source Sans 3", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 body {
@@ -63,6 +63,7 @@ picture {
     display: grid;
     align-self: center;
 }
+
 #picture {
     display: grid;
     width: 60%;
@@ -147,4 +148,134 @@ footer {
     margin-top: 8%;
     padding-top: 1%;
     padding-bottom: 1%;
+}
+
+@media screen and (max-width: 1100px) {
+
+    h1 {
+        font-size: 50px;
+    }
+
+    #list-section {
+        grid-template-columns: none;
+    }
+
+    #picture {
+        width: 35%;
+        margin-top: 3%;
+        margin-bottom: 5%;
+    }
+
+    #todos {
+        width: 70%;
+        margin-right: 0;
+    }
+
+    input[type=button] {
+        width: 45%;
+        margin-top: 2%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    h1 {
+        font-size: 40px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    #picture {
+        width: 40%;
+    }
+
+    #todos {
+        width: 85%;
+        font-size: 14px;
+    }
+
+    #todos ul li {
+        font-size: 17px;
+    }
+
+    #todos label {
+        font-size: 15px;
+    }
+
+    #todos button {
+        font-size: 11px;
+    }
+
+    #add-section {
+        width: 80%;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    form {
+        width: 60%;
+    }
+
+    #add-section label {
+        font-size: 14px;
+    }
+
+    input[type=button] {
+        width: 25%;
+        font-size: 11px;
+        padding: 1%;
+    }
+
+    input[type=text] {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+
+    h1 {
+        font-size: 35px;
+    }
+
+    h2 {
+        font-size: 17px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    #todos button {
+        font-size: 10px;
+    }
+
+    #todos ul li {
+        font-size: 15px;
+    }
+
+    #todos label {
+        font-size: 14px;
+    }
+
+    input[type=button] {
+        width: 30%;
+        font-size: 10px;
+    }
+
+    ::placeholder {
+        font-size: 10px;
+    }
+
+    #picture {
+        width: 45%;
+    }
+
 }
