@@ -5,7 +5,7 @@ Här är min webbplats: https://dt208g-lab2.onrender.com
 
 
 
-Efter att ha tittat på uppgiftens tillhörande föreläsning och uppföljning valde jag att strukturerar upp mitt arbete i flera ts filer likt Lars förslag. En för interface, en för todoList-klassen, 
+Efter att ha tittat på uppgiftens tillhörande föreläsning och uppföljning valde jag att strukturerar upp mitt arbete i flera ts-filer likt Lars förslag. En för interface, en för todoList-klassen, 
 en fil för management av todos, en fil för handtering av localStorage samt en fil för själva main och utskrift till DOM.
 
 Jag har skapat de metoder och attribut som finns listade i uppgiften. TodoManager har de samlade metoderna och constructorn initierar todos-arrayen och laddar todos från LocalStorage. 
