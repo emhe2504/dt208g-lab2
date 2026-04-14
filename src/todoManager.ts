@@ -31,7 +31,7 @@ export class todoManager {
     }
 
     /**
-     * Korrigera completed i this.todos
+     * Korrigera completed i this.todos (true/false)
      * beroende på om checkbox är checked eller inte 
      */
 

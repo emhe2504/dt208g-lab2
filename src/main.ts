@@ -11,12 +11,12 @@ const newManager = new todoManager();       //Skapar instans av todoManager
  * aktivera "click" på knapp.
  */
 
-const addButton = document.getElementById("addButton") as HTMLButtonElement;
-
 document.addEventListener("DOMContentLoaded", () => {
 
     renderTodos();
 
+
+    const addButton = document.getElementById("addButton") as HTMLButtonElement;
 
     addButton.addEventListener("click", () => {
 
@@ -78,7 +78,7 @@ function handleInput(successResult: boolean): void {
 /**
  * Hämtar alla todos - getTodo.
  * Gör lista för varje todo.
- * Med möjlighet att checka av.
+ * Med möjlighet att checka av och radera.
  */
 
 const todoSpot = document.getElementById("todos") as HTMLDivElement;
@@ -135,7 +135,7 @@ function renderTodos(): void {
 
             //Möjlighet att radera todo via radera-knapp
 
-            const deleteLi = document.createElement("li");
+            const deleteLi = document.createElement("li") as HTMLLIElement;
 
             const deleteButton = document.createElement("button") as HTMLButtonElement;
             deleteButton.textContent = "Radera";
