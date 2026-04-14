@@ -26,6 +26,10 @@ body {
     background-color: #7AAACE;
 }
 
+main {
+    display: grid;
+}
+
 header {
     display: grid;
     width: 100%;
